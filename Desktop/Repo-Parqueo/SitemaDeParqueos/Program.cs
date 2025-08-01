@@ -9,6 +9,7 @@ namespace SitemaDeParqueos
     internal static class Program
     {
         /// <summary>
+        /// hola
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
