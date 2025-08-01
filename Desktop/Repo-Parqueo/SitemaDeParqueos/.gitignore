@@ -16,3 +16,5 @@ Thumbs.db
 *.userosscache 
 *.sln.iml 
 .idea/
+*.mdf
+*.ldf
