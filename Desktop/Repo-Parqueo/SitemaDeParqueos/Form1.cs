@@ -93,5 +93,13 @@ namespace SitemaDeParqueos
             Login login = new Login();
             login.Show();
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNumero.Clear();
+            cmbEstado.SelectedIndex = 0;
+            dtpFechaRegistro.Value = DateTime.Now;
+
+        }
     }
 }
