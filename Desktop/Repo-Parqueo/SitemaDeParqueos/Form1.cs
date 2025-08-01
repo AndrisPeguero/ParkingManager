@@ -50,5 +50,24 @@ namespace SitemaDeParqueos
                 dgvParqueos.DataSource = dt;
             }
         }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvParqueos.CurrentRow != null)
+            {
+                int id = Convert.ToInt32(dgvParqueos.CurrentRow.Cells["Id"].Value);
+                using (SqlConnection cn = Conexion.ObtenerConexion())
+                {
+                    cn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE Parqueos SET Numero = @numero, Estado = @estado, FechaRegistro = @fecha WHERE Id = @id", cn);
+                    cmd.Parameters.AddWithValue("@numero", txtNumero.Text);
+                    cmd.Parameters.AddWithValue("@estado", cmbEstado.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@fecha", dtpFechaRegistro.Value);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Parqueo actualizado.");
+                    MostrarParqueos();
+                }
+            }
+        }
     }
 }
