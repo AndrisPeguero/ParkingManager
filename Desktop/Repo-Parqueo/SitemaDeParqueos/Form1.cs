@@ -69,5 +69,22 @@ namespace SitemaDeParqueos
                 }
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvParqueos.CurrentRow != null)
+            {
+                int id = Convert.ToInt32(dgvParqueos.CurrentRow.Cells["Id"].Value);
+                using (SqlConnection cn = Conexion.ObtenerConexion())
+                {
+                    cn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM Parqueos WHERE Id = @id", cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Parqueo eliminado.");
+                    MostrarParqueos();
+                }
+            }
+        }
     }
 }
